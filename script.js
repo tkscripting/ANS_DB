@@ -408,7 +408,7 @@ const userscript = `// ==UserScript==
 // @match        https://madame.ynap.biz/*
 // @grant        none
 ${selectedUrls.map(url => `// @require      ${url}`).join("\n")}
-// @run-at       document-end
+// @run-at       document-start
 // ==/UserScript==
 
 /*
