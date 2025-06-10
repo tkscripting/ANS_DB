@@ -404,7 +404,7 @@ downloadScriptBtn.onclick = () => {
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Call multiple external scripts
-// @author       You
+// @author       You <3
 // @match        https://madame.ynap.biz/*
 // @grant        none
 ${selectedUrls.map(url => `// @require      ${url}`).join("\n")}
