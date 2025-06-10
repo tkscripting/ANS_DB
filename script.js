@@ -399,7 +399,7 @@ downloadScriptBtn.onclick = () => {
     return;
   }
 
-const userscript = `// ==UserScript==
+  const userscript = `// ==UserScript==
 // @name         Madame Scripts
 // @namespace    http://tampermonkey.net/
 // @version      0.1
@@ -408,9 +408,8 @@ const userscript = `// ==UserScript==
 // @match        https://madame.ynap.biz/*
 // @grant        none
 ${selectedUrls.map(url => `// @require      ${url}`).join("\n")}
-// @run-at       document-start
+// @run-at       document-end
 // ==/UserScript==
-
 /*
 ⠀⠀⠀⠀⣀⣀⣤⣤⣦⣶⢶⣶⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⡄⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⣿⣿⣿⠿⣿⣿⣾⣿⣿⣿⣿⣿⣿⠟⠛⠛⢿⣿⡇⠀⠀⠀⠀⠀⠀⠀
