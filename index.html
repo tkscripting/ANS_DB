@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskForge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- Auth UI -->
+<!-- Auth UI (top right) -->
+<div id="authControl">
+  <button id="authToggleBtn">Sign In</button>
+</div>
+
+<!-- Auth Modal -->
+<div id="authModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Sign In</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <div class="modal-actions">
+      <button id="loginBtn">Sign In</button>
+      <button id="closeAuthModalBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; gap: 10px; margin-top: 20px;">
+  <button id="openModalBtn" class="requires-auth hidden">+ Create Card</button>
+  <button id="generateScriptBtn" class="requires-auth hidden">Generate Script</button>
+  <select id="filterCategoryDropdown" class="requires-auth hidden" style="padding: 10px; border-radius: 12px;">
+    <option value="">Show All</option>
+    <option value="Madame">Madame</option>
+    <option value="Photoshop">Photoshop</option>
+    <option value="App">App</option>
+    <option value="Website">Website</option>
+    <option value="Other">Other</option>
+  </select>
+  <input
+  type="text"
+  id="cardSearchInput"
+  placeholder="Search..."
+  class="requires-auth hidden"
+  style="padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 500; background: #e0e5ec; border: none; box-shadow: 6px 6px 12px #b8bec9, -6px -6px 12px #ffffff; transition: all 0.3s ease;"
+/>  
+</div>
+
+<!-- Script Generator Modal -->
+<div id="scriptModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Select Scripts to Include</h2>
+    <div id="scriptCheckboxList" class="checkbox-list"></div>
+    <div class="modal-actions">
+      <button id="downloadScriptBtn">Download</button>
+      <button id="downloadAllBtn">Download All</button>
+      <button id="closeScriptModalBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="modalTitle">New Card</h2>
+    <input type="text" id="cardTitle" placeholder="Card title" />
+<select id="cardCategory">
+  <option value="Madame">Madame</option>
+  <option value="Photoshop">Photoshop</option>
+  <option value="App">App</option>
+  <option value="Website">Website</option>
+  <option value="Other">Other</option>
+</select>
+    <textarea id="cardDescription" placeholder="Card description..."></textarea>
+    <input type="url" id="cardDownloadUrl" placeholder="Optional download URL (raw GitHub link)" />
+    <label style="font-size: 14px;">
+      <input type="checkbox" id="requiredCheckbox" />
+      Required
+    </label> 
+    <div class="modal-actions">
+      <button id="submitCardBtn">Save</button>
+      <button id="closeModalBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Board Columns -->
+  <div class="board">
+    <div class="column"
+     ondragover="event.preventDefault()"
+     ondrop="handleDrop(event, 'todo')">
+  <h2>To Do</h2>
+  <div id="todo" class="card-list"></div>
+</div>
+
+<div class="column"
+     ondragover="event.preventDefault()"
+     ondrop="handleDrop(event, 'inprogress')">
+  <h2>In Progress</h2>
+  <div id="inprogress" class="card-list"></div>
+</div>
+
+<div class="column"
+     ondragover="event.preventDefault()"
+     ondrop="handleDrop(event, 'done')">
+  <h2>Done</h2>
+  <div id="done" class="card-list"></div>
+</div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="script.js"></script>
+  
+</body>
+</html>
